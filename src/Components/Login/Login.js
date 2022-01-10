@@ -6,7 +6,7 @@ import   "./Login.css";
 
 
 const Login = () => {
-    const { loginWithEmailPassword, error, logOut, user } = useAuth()
+    const { loginWithEmailPassword, error, signInWithGoogle, user } = useAuth()
     const [loginData, setLoginData] = useState({})
     let navigate = useNavigate()
     if(user?.email){
@@ -44,9 +44,18 @@ const Login = () => {
                         Login
                     </button>
                 </Form>
+                <h4 className='text-center my-5'>----------------------OR------------------</h4>
+                <button className='btn d-block mx-auto border' onClick={signInWithGoogle}>
+                    <img className='w-25' src="https://i.ibb.co/cbMg5F7/120px-Google-G-Logo-svg.png" alt="" />
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    <span className='display-6'>Sign In with Google</span>
+                </button>
                 {error && <p className='text-danger mt-5'>{error}</p>}
                 <p className='mt-5 text-center'>Don't have an account ? <NavLink to="/registration">Sign up</NavLink></p>
-                {user.email ? <button className='btn btn-danger d-block mx-auto' onClick={logOut}>LogOut</button> : <p></p>}
+                
             </div>
         </div>
     );

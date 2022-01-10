@@ -4,7 +4,7 @@ import Blog from '../Blog/Blog';
 const Blogs = () => {
     const[blogs, setBlogs] = useState([])
     useEffect( ()=>{
-       fetch('./data.json')
+       fetch('https://warm-garden-67584.herokuapp.com/allposts')
        .then(res=> res.json())
        .then(data=> setBlogs(data))
     },[])
@@ -13,7 +13,7 @@ const Blogs = () => {
             <h1>Our Popular Blogs</h1>
             <div className="row">
               {
-                  blogs.slice(0,6).map(blog=>
+                  blogs?.slice(0,6).map(blog=>
                   <div className="col-md-4">
                       <Blog
                   key={blog.id}

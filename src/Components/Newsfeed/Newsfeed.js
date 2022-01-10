@@ -6,7 +6,7 @@ import News from "../News/News";
 const Newsfeed = () => {
   const  [totalblogs, setTotalBlogs ] = useState([]);
   useEffect(() => {
-    fetch("./data.json")
+    fetch("https://warm-garden-67584.herokuapp.com/allposts")
       .then((res) => res.json())
       .then((data) => setTotalBlogs(data));
   }, []);
@@ -17,7 +17,7 @@ const Newsfeed = () => {
       <h1>Our All Blogs</h1>
       <div className="row">
       {
-                  totalblogs.map(blogs=>
+                  totalblogs?.map(blogs=>
                   <div className="col-md-4">
                       <News
                   key={blogs.id}
